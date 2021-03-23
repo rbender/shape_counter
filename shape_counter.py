@@ -14,15 +14,10 @@ class Grid:
         self.max_x = len(pixels[0]) - 1
         self.max_y = len(pixels) - 1
 
-        self.points = self.build_points(pixels)
+        self.points = self.build_points()
 
-    def build_points(self, pixels):
-        #TODO Replace with list comprehension
-        points = []
-        for y in range(len(pixels)):
-            for x in range(len(pixels[y])):
-                points.append(Point(x,y))
-        return points
+    def build_points(self):
+        return [Point(x,y) for y in range(self.max_y + 1) for x in range(self.max_x + 1)]
 
     def is_on(self, point):
         return self.pixels[point.y][point.x] == 1
